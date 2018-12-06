@@ -201,8 +201,21 @@ class Solver(object):
         In test mode, if y is None, then the out is the [prediction].
         In test mode, if y is not None, then the out is [prediction, loss].
         """
+        
+        '''!!!
+        '''
+        if y is None:
+            n_vox = cfg.CONST.N_VOX
+            no_loss_return = True
+            y_val = torch.zeros([cfg.CONST.BATCH_SIZE, 2, n_vox, n_vox, n_vox], dtype=torch.float)
+        else:
+            no_loss_return = False
+            y_val = y
+        '''!!!
+        '''
+        
         x = torch.FloatTensor(x)
-        y = torch.FloatTensor(y)
+        y = torch.FloatTensor(y_val)
         
         if torch.cuda.is_available():
             x.cuda(async=True)
@@ -220,7 +233,7 @@ class Solver(object):
         activations = results[2:]
 
 
-        if y is None:
+        if no_loss_return:
             return prediction, activations
         else:
             return prediction, loss, activations
