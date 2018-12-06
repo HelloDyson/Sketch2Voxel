@@ -31,4 +31,7 @@
 *.out
 *.app
 
+# mac files
+*.DS_Store
+
 data/*
