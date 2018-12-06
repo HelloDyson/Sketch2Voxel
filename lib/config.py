@@ -30,7 +30,7 @@ __C.NET_NAME = 'res_gru_net'
 __C.PROFILE = False
 
 __C.CONST = edict()
-__C.CONST.DEVICE = 'cuda0'
+
 __C.CONST.RNG_SEED = 0
 __C.CONST.IMG_W = 127
 __C.CONST.IMG_H = 127
@@ -115,6 +115,8 @@ Here is the configs you can change
 __C.DATASET = './experiments/dataset/shapenet_1000.json'  # yaml/json file that specifies a dataset (training/testing)
 
 __C.CONST.BATCH_SIZE = 36
+
+__C.CONST.DEVICE = 'cuda0'
 
 __C.CONST.NETWORK_CLASS = 'ResidualGRUNet'
 
