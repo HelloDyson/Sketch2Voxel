@@ -27,11 +27,16 @@ def test_net():
 
     # Make a network and load weights
     NetworkClass = load_model(cfg.CONST.NETWORK_CLASS)
-    print('Network definition: \n')
-    print(inspect.getsource(NetworkClass.network_definition))
-    net = NetworkClass(compute_grad=False)
-    net.load(cfg.CONST.WEIGHTS)
+
+    #print('Network definition: \n')
+    #print(inspect.getsource(NetworkClass.network_definition))
+
+    net = NetworkClass()
+    
+    net.cuda()
+    
     solver = Solver(net)
+    solver.load(cfg.CONST.WEIGHTS)
 
     # set constants
     batch_size = cfg.CONST.BATCH_SIZE
@@ -41,6 +46,7 @@ def test_net():
     queue = Queue(cfg.QUEUE_SIZE)
     data_pair = category_model_id_pair(dataset_portion=cfg.TEST.DATASET_PORTION)
     processes = make_data_processes(queue, data_pair, 1, repeat=False, train=False)
+
     num_data = len(processes[0].data_paths)
     num_batch = int(num_data / batch_size)
 
@@ -57,7 +63,12 @@ def test_net():
         if batch_idx == num_batch:
             break
 
+        #activations is a list of torch.cuda.FloatTensor
         pred, loss, activations = solver.test_output(batch_img, batch_voxel)
+        
+        #convert pytorch tensor to numpy array
+        pred = pred.data.cpu().numpy()
+        loss = loss.data.cpu().numpy()
 
         for j in range(batch_size):
             # Save IoU per thresh
@@ -67,7 +78,7 @@ def test_net():
 
             # Compute AP
             precision = sklearn.metrics.average_precision_score(
-                batch_voxel[j, :, 1].flatten(), pred[j, :, 1].flatten())
+                batch_voxel[j, 1].flatten(), pred[j, 1].flatten())
 
             results['mAP'][batch_idx, j] = precision
 
@@ -75,8 +86,8 @@ def test_net():
         results['cost'][batch_idx] = float(loss)
         print('%d/%d, costs: %f, mAP: %f' %
                 (batch_idx, num_batch, loss, np.mean(results['mAP'][batch_idx])))
-        
         batch_idx += 1
+
 
     print('Total loss: %f' % np.mean(results['cost']))
     print('Total mAP: %f' % np.mean(results['mAP']))

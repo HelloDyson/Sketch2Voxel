@@ -1,8 +1,9 @@
 import inspect
 from multiprocessing import Queue
+import torch
 
 # Training related functions
-from models import load_model
+from models.__init__ import load_model
 from lib.config import cfg
 from lib.solver import Solver
 from lib.data_io import category_model_id_pair
@@ -10,6 +11,9 @@ from lib.data_process import kill_processes, make_data_processes
 
 # Define globally accessible queues, will be used for clean exit when force
 # interrupted.
+
+#train_net()
+
 train_queue, val_queue, train_processes, val_processes = None, None, None, None
 
 
@@ -28,23 +32,22 @@ def cleanup_handle(func):
     return func_wrapper
 
 
-@cleanup_handle
+#@cleanup_handle
 def train_net():
     '''Main training function'''
     # Set up the model and the solver
     NetClass = load_model(cfg.CONST.NETWORK_CLASS)
+
     print('Network definition: \n')
-    print(inspect.getsource(NetClass.network_definition))
+#    print(inspect.getsource(NetClass.network_definition))
     net = NetClass()
+    print(net)
 
     # Check that single view reconstruction net is not used for multi view
     # reconstruction.
     if net.is_x_tensor4 and cfg.CONST.N_VIEWS > 1:
         raise ValueError('Do not set the config.CONST.N_VIEWS > 1 when using' \
                          'single-view reconstruction network')
-
-    # Generate the solver
-    solver = Solver(net)
 
     # Prefetching data processes
     #
@@ -66,6 +69,14 @@ def train_net():
         1,
         repeat=True,
         train=False)
+
+#    net.cuda()
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    net = net.to(device)
+
+    # Generate the solver
+    solver = Solver(net)
 
     # Train the network
     solver.train(train_queue, val_queue)
