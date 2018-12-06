@@ -12,15 +12,17 @@ from PIL import Image
 from six.moves import queue
 from multiprocessing import Process, Event
 
-from lib.imgVoxDataloader import imgVoxDataloader
-
-# from lib.config import cfg
+from lib.config import cfg
 # from lib.data_augmentation import preprocess_img
 # from lib.data_io import get_voxel_file, get_rendering_file
 from lib.binvox_rw import read_as_3d_array
 torch.backends.cudnn.deterministic=True
 
-data_root = './data/'
+import os.path as osp
+import sys
+
+root = osp.dirname(osp.dirname(__file__))
+data_root = root +'/data/'
 
 rendering_root = data_root + 'Rendering'
 voxel_root = data_root + 'voxel'
