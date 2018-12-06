@@ -20,7 +20,7 @@ class Net(nn.Module):
         self.n_vox = cfg.CONST.N_VOX
 
         # override x and is_x_tensor4 when using multi-view network
-        self.is_x_tensor4 = True
+        self.is_x_tensor4 = False
 
     def parameter_init(self):
         # initialize all the parameters of the gru net

@@ -17,7 +17,7 @@ class BaseGRUNet(Net):
         """
         Set the necessary data of the network
         """
-        self.is_x_tensor4 = False
+        self.is_x_tensor4 = True
         
         self.n_gru_vox = 4
         #the size of x is (num_views, batch_size, 3, img_w, img_h)
