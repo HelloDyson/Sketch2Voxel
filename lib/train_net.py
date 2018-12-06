@@ -1,4 +1,3 @@
-import inspect
 from multiprocessing import Queue
 import torch
 
@@ -11,8 +10,6 @@ from lib.data_process import kill_processes, make_data_processes
 
 # Define globally accessible queues, will be used for clean exit when force
 # interrupted.
-
-#train_net()
 
 train_queue, val_queue, train_processes, val_processes = None, None, None, None
 
@@ -32,14 +29,13 @@ def cleanup_handle(func):
     return func_wrapper
 
 
-#@cleanup_handle
+@cleanup_handle
 def train_net():
     '''Main training function'''
     # Set up the model and the solver
     NetClass = load_model(cfg.CONST.NETWORK_CLASS)
 
     print('Network definition: \n')
-#    print(inspect.getsource(NetClass.network_definition))
     net = NetClass()
     print(net)
 
