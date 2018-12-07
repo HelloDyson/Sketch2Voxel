@@ -54,6 +54,16 @@ def npyLoader(f):
 ren_dataset = datasets.ImageFolder(root=rendering_root, transform=center_crop)
 vox_dataset = datasets.DatasetFolder(root=voxel_root, transform=None,loader=npyLoader,extensions='npy')
 
+def get_ren_data_loaders(batch_size):
+    render_loader = torch.utils.data.DataLoader(
+            ren_dataset, batch_size=batch_size, shuffle=False, num_workers=0, drop_last=True)
+    return render_loader
+
+def get_vox_data_loaders(idx):
+    sub_vox_dataset = torch.utils.data.Subset(vox_dataset,idx)
+    voxel_loader = torch.utils.data.DataLoader(
+            sub_vox_dataset, batch_size=len(idx), shuffle=True, num_workers=4, drop_last=True)
+    return voxel_loader
 
 def get_train_data_loaders(idx):
     
