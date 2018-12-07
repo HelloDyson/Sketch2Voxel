@@ -32,7 +32,7 @@ __C.PROFILE = False
 __C.CONST = edict()
 
 __C.CONST.RNG_SEED = 0
-__C.CONST.IMG_W = 17
+__C.CONST.IMG_W = 127
 __C.CONST.IMG_H = 127
 __C.CONST.N_VOX = 32
 __C.CONST.N_VIEWS = 5
