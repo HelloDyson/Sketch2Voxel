@@ -37,3 +37,4 @@
 data/*
 ShapeNet/*
 .DS_Store/*
+output/*
