@@ -112,7 +112,7 @@ __C.TEST.VOXEL_THRESH = [0.4]
 Here is the configs you can change
 '''
 
-__C.DATASET = './experiments/dataset/shapenet_1000.json'  # yaml/json file that specifies a dataset (training/testing)
+__C.DATASET = './info/shapenet_1000.json'  # yaml/json file that specifies a dataset (training/testing)
 
 __C.CONST.BATCH_SIZE = 36
 
