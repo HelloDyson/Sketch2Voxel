@@ -38,3 +38,4 @@ data/*
 ShapeNet/*
 .DS_Store/*
 output/*
+.ipynb_checkpoints/*
