@@ -39,18 +39,19 @@ base_transform = transforms.Compose([
     ])
 
 # load the image transformer
-centre_crop = transforms.Compose([
-    transforms.RandomResizedCrop(144),
-    transforms.ToTensor(),
+center_crop = transforms.Compose([
+    transforms.RandomResizedCrop(127),
+    transforms.RandomHorizontalFlip(),
+    transforms.ToTensor(),    
     transforms.Normalize([0.5]*3, [0.5]*3)
-])
+    ])
 
 
 def npyLoader(f):
     x = np.load(f)
     return torch.from_numpy(x)
 
-ren_dataset = datasets.ImageFolder(root=rendering_root, transform=base_transform)
+ren_dataset = datasets.ImageFolder(root=rendering_root, transform=center_crop)
 vox_dataset = datasets.DatasetFolder(root=voxel_root, transform=None,loader=npyLoader,extensions='npy')
 
 
