@@ -39,4 +39,5 @@ ShapeNet/*
 .DS_Store/*
 output/*
 .ipynb_checkpoints/*
-pix2pix/*
+pix2pix/checkpoints/*
+pix2pix/datasets/*
