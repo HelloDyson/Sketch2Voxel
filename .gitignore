@@ -40,3 +40,4 @@ output/
 .ipynb_checkpoints/
 pix2pix/checkpoints/
 pix2pix/datasets/
+pix2pix/
