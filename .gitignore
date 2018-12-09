@@ -33,10 +33,10 @@
 # mac files
 *.DS_Store
 
-data/*
-ShapeNet/*
-.DS_Store/*
-output/*
-.ipynb_checkpoints/*
-pix2pix/checkpoints/*
-pix2pix/datasets/*
+data/
+ShapeNet/
+.DS_Store/
+output/
+.ipynb_checkpoints/
+pix2pix/checkpoints/
+pix2pix/datasets/
