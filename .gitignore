@@ -40,6 +40,6 @@ ShapeNet/
 output/
 results/
 checkpoints/
-.ipynb_checkpoints/
+**/.ipynb_checkpoints
 pix2pix/checkpoints/
 pix2pix/datasets/
