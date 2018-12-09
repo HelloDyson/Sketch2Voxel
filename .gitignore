@@ -33,6 +33,7 @@
 # mac files
 *.DS_Store
 
+**/__pycache__
 data/
 ShapeNet/
 .DS_Store/
@@ -40,4 +41,3 @@ output/
 .ipynb_checkpoints/
 pix2pix/checkpoints/
 pix2pix/datasets/
-pix2pix/
