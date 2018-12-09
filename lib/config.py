@@ -60,7 +60,7 @@ __C.TRAIN.USE_REAL_IMG = False
 
 
 # Data worker
-__C.TRAIN.NUM_WORKER = 5  # number of data workers
+__C.TRAIN.NUM_WORKER = 4  # number of data workers
 
 __C.TRAIN.WORKER_LIFESPAN = 100  # if use blender, kill a worker after some iteration to clear cache
 __C.TRAIN.WORKER_CAPACITY = 1000  # if use OSG, load only limited number of models at a time
@@ -114,7 +114,7 @@ Here is the configs you can change
 
 __C.DATASET = './info/shapenet_1000.json'  # yaml/json file that specifies a dataset (training/testing)
 
-__C.CONST.BATCH_SIZE = 36
+__C.CONST.BATCH_SIZE = 1
 
 __C.CONST.DEVICE = 'cuda0'
 
