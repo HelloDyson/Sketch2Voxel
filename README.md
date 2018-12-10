@@ -22,15 +22,16 @@ ShapeNet rendered images http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz
 
 ShapeNet voxelized models http://cvgl.stanford.edu/data2/ShapeNetVox32.tgz
 
-# Download CycleGan/pix2pix dataset via
-	bash .pix2pix/scripts/download_pix2pix_model.sh edge2shoes_pretrained
-	bash .pix2pix/datasets/download_pix2pix_dataset.sh edge2shoes
-
-# Process data into pytorch dataloader format
-	open "Train on Pytorch.ipynb" and run all
-
-# Train on PyTorch dataloader and model
-	open "Train on Pytorch.ipynb" and run all
+# Download CycleGan/pix2pix dataset
+	cd pix2pix
+	bash ./scripts/download_pix2pix_model.sh edge2shoes_pretrained
+	bash ./datasets/download_pix2pix_dataset.sh edge2shoes
 
 # Test 3D reconstruction
 	open "3D-R2N2 3D Reconstruction.ipynb" and run all
+	
+# Process data into pytorch dataloader format
+	open "Data preparing.ipynb" and run all
+
+# Train on PyTorch dataloader and model
+	open "Train on Pytorch.ipynb" and run all
