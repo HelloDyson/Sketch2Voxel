@@ -13,7 +13,7 @@ Original CycleGAN/Pix2pix page: https://github.com/junyanz/pytorch-CycleGAN-and-
 install PyTorch in https://pytorch.org/get-started/locally/
 
 # Dataset
-Download the following dataset of 3D-R2N2 and save in data/
+Download the following dataset of 3D-R2N2 and save in data
 ShapeNet rendered images http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz
 ShapeNet voxelized models http://cvgl.stanford.edu/data2/ShapeNetVox32.tgz
 
