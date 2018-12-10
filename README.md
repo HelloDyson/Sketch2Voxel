@@ -14,7 +14,9 @@ install PyTorch in https://pytorch.org/get-started/locally/
 
 # Dataset
 Download the following dataset of 3D-R2N2 and save in data
+
 ShapeNet rendered images http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz
+
 ShapeNet voxelized models http://cvgl.stanford.edu/data2/ShapeNetVox32.tgz
 
 # Download CycleGan/pix2pix dataset via
