@@ -7,9 +7,12 @@ Original CycleGAN/Pix2pix page: https://github.com/junyanz/pytorch-CycleGAN-and-
 
 # Installation
 
+This test on Ubuntu 18.04 with CUDA 9.0 but it should work on Windows/ Mac /Linux os
+
 	git clone this repository
 	cd Pytorch-3dr2n2
-	pip install -r requirements.txt
+	pip install -r pix2pix/requirements.txt
+	
 install PyTorch in https://pytorch.org/get-started/locally/
 
 # Dataset
