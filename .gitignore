@@ -46,3 +46,4 @@ pix2pix/datasets/
 pix2pix/results/
 pix2pix/single_sketch/
 *.obj
+*.zip
