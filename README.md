@@ -1,4 +1,4 @@
-# Pytorch-3dr2n2
+# Pixel2Voxel (pytorch)
 Final project repo of 6.869 Computer Vision MIT
 
 Original 3D-R2N2 with Theano: https://github.com/chrischoy/3D-R2N2
